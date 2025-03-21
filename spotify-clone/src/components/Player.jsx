@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { songsData } from '../assets/assets'
 import { assets } from '../assets/assets'; 
 import { PlayerContext } from '../context/PlayerContext';
@@ -6,7 +6,9 @@ import { PlayerContext } from '../context/PlayerContext';
 
 const Player = () => {
 
-    const {seekBar,seekBg,playStaus,play,pause} = useContext(PlayerContext);
+    const {seekBar,seekBg,playStatus,play,pause} = useContext(PlayerContext);
+    const audioRef = useRef(null);
+    
 
 
 
