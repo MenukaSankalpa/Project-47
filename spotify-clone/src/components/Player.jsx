@@ -6,7 +6,7 @@ import { PlayerContext } from '../context/PlayerContext';
 
 const Player = () => {
 
-    const {seekBar,seekBg,playStatus,play,pause} = useContext(PlayerContext);
+    const {seekBar,seekBg,playStaus,play,pause} = useContext(PlayerContext);
 
 
 
