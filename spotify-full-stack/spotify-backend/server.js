@@ -8,6 +8,7 @@ import songRouter from "./src/routes/songRoute.js";
 const app = express();
 const port = process.env.PORT || 4000;
 connectDB();
+connectCloudinary();
 
 //middlewares
 app.use(express.json());
