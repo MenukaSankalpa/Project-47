@@ -16,6 +16,6 @@ app.use(express.json());
 app.use(cors());
 
 //initializing routes
-app.use("/api/song", songRouter)
+app.use("/api/song", songRouter);
 app.get("/", (req, res) => res.send("API Working"));
-app.listen(port, () => console.log(`Server started on ${port}`));
+app.listen(port, () => { console.log(`Server started on ${port}`); });

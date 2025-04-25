@@ -1,5 +1,6 @@
 import { v2 as cloudinary } from 'cloudinary';
 
+
 const addSong = async (req, res) => {
     try {
         const name = req.body.name;
@@ -9,9 +10,12 @@ const addSong = async (req, res) => {
         const imageFile = req.files.image[0];
         const audioUpload = await cloudinary.uploader.upload(audioFile.path, {resource_type:"video"});
         const imageUpload = await cloudinary.uploader.upload(imageFile.path, {resource_type:"image"});
-        const duration = `${Math.floor(audioUpload.duration/60)}:${Math.floor(audioUpload.duration%60)}`
+        //const duration = `${Math.floor(audioUpload.duration/60)}:${Math.floor(audioUpload.duration%60)}`;
 
-        const songData = {
+        console.log(name,desc,album,audioUpload,imageUpload);
+
+
+        /*const songData = {
             name,
             desc,
             album,
@@ -20,30 +24,15 @@ const addSong = async (req, res) => {
             duration
         }
 
-        console.log(name,desc,album,audioUpload,imageUpload);
+        const song = songModel(songData);
+        await song.save();
 
-        /*const newSong = new songModel({
-            name,
-            desc,
-            album,
-            image: imageUpload.secure_url,
-            file: audioUpload.secure_url,
-            durattion: "03.30"
-        });
-
-        await newSong.save();
-
-        return res.status(201).json({
-            message: "Song uploaded successfully",
-            data: newSong
-        });*/
-
-
+        res.json({success:true, message:"Song Added"})*/
 
     } catch (error) {
-        
+        //console.error("Error in addSong:", error); // This shows the real problem in the terminal
+    //res.status(500).json({ success: false, message: error.message });
     }
-
 }
 
 const listSong = async (req, res) => {
