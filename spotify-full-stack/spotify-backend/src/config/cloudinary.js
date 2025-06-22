@@ -9,4 +9,4 @@ const connectCloudinary = async () => {
     })
 }
 
-export { cloudinary, connectCloudinary };
+export default connectCloudinary;
