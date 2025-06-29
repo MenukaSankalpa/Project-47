@@ -1,5 +1,4 @@
 import { v2 as cloudinary } from 'cloudinary';
-import songModel from '../models/songModel.js';
 
 const addSong = async (req, res)=> {
     try {
@@ -7,19 +6,16 @@ const addSong = async (req, res)=> {
         const desc = req.body.desc;
         const album = req.body.album;
 
-        const audioFile = req.files.audio?.[0];
-        const imageFile = req.files.image?.[0];
-
-        if(!audioFile || !imageFile) {
-            return res.status(400).json({ success: false, message : "Audioand image files are required"});
-        }
+        const audioFile = req.files.audio[0];
+        const imageFile = req.files.image[0];
 
         const audioUpload = await cloudinary.uploader.upload(audioFile.path, {resource_type: "video"});
         const imageUpload = await cloudinary.uploader.upload(imageFile.path, {resource_type: "image"});
 
-        const duration = `${Math.floor(audioUpload.duration/60)}:${Math.floor(audioUpload.duration%60)}`
+        console.log(name, desc, album, audioUpload, imageUpload);
+        //const duration = `${Math.floor(audioUpload.duration/60)}:${Math.floor(audioUpload.duration%60)}`
 
-        const songData = {
+        /*const songData = {
             name,
             desc,
             album,
@@ -31,11 +27,11 @@ const addSong = async (req, res)=> {
         const song = new songModel(songData);
         await song.save();
 
-        res.json({success:true, message: "Song Added"});
+        res.json({success:true, message: "Song Added"});*/
 
     } catch (error) {
-        console.error("Error adding song:", error)
-        res.status(500).json({success: false});
+        //console.error("Error adding song:", error)
+        //res.status(500).json({success: false});
     }
 
 }
